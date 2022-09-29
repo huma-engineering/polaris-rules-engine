@@ -1,3 +1,6 @@
+# Announcement :loudspeaker: 
+
+This repository is transferred from [gdm-SynseneHealth](https://github.com/sensynehealth/polaris-rules-engine) to Huma organisation as part of change in asset ownership 
 # Polaris Rules Engine
 
 The Rules Engine is part of the Polaris platform (formerly DHOS). This service is  a Node.js microservice to expose an API for a rules engine.
