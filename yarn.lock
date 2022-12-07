@@ -2600,8 +2600,8 @@ detect-newline@^2.1.0:
 
 dhos-scoring-engine@^1.1.0:
   version "1.1.1"
-  resolved "https://npm-proxy.fury.io/sensynehealth/~/up/ver_26ZPhv/dhos-scoring-engine-1.1.1.tgz#af793d12418b1ead66a020353dc01f3d5225a8cb"
-  integrity sha1-r3k9EkGLHq1moCA1PcAfPVIlqMs=
+  resolved "https://registry.yarnpkg.com/dhos-scoring-engine/-/dhos-scoring-engine-1.1.1.tgz#af793d12418b1ead66a020353dc01f3d5225a8cb"
+  integrity sha512-zH6l78NPNcnWp5Fm5zG4f+r5Nu7hnSn9ICL9sMldm2xXmoIT0Jge/7cqWY8+1nE8RyYQVn6U4kxUNTxlroyb7Q==
   dependencies:
     "@babel/polyfill" "^7.2.5"
     dayjs "^1.8.8"
