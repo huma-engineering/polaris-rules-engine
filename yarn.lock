@@ -2599,9 +2599,9 @@ detect-newline@^2.1.0:
   integrity sha1-9B8cEL5LAOh7XxPaaAdZ8sW/0+I=
 
 dhos-scoring-engine@^1.1.0:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/dhos-scoring-engine/-/dhos-scoring-engine-1.1.1.tgz#af793d12418b1ead66a020353dc01f3d5225a8cb"
-  integrity sha512-zH6l78NPNcnWp5Fm5zG4f+r5Nu7hnSn9ICL9sMldm2xXmoIT0Jge/7cqWY8+1nE8RyYQVn6U4kxUNTxlroyb7Q==
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/dhos-scoring-engine/-/dhos-scoring-engine-1.1.2.tgz#45a21f6318e77a43a87714ea72fd0ee4a0445500"
+  integrity sha512-Y8QVCs2c0i0TbkRLEctg3pI0EtoAN3mtYPDYoG0R+6nRuFlG2LVpVzDSd5vT6ZP5GouMSCtwDzsJDcJQU+SjIw==
   dependencies:
     "@babel/polyfill" "^7.2.5"
     dayjs "^1.8.8"
