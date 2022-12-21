@@ -81,7 +81,7 @@ workflows:
       - test:
           context: engineering-build
       - deploy-dev:
-          context: dhos-deploy
+          context: engineering-build
           requires:
             - test
           filters:
