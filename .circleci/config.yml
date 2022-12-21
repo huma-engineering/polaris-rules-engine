@@ -69,14 +69,11 @@ jobs:
       - acr-login
       - docker/build:
           step-name: Build Docker image for ACR
-          extra-build-args: --build-arg CUSTOM_NPM_TOKEN
+          extra_build_args: --build-arg CUSTOM_NPM_TOKEN
           <<: *DOCKER_BUILD_AND_PUSH_PARAMETERS
       - docker/push:
           step-name: Push Docker image to ACR
           <<: *DOCKER_BUILD_AND_PUSH_PARAMETERS
-#      - run:
-#          name: Deploy to Azure dev environment
-#          command: .circleci/deploy_azure_dev.sh
 workflows:
   version: 2
   build_test_deploy:
