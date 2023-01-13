@@ -1,0 +1,61 @@
+name: CI
+
+on: [workflow_dispatch, push, pull_request]
+
+env:
+  REGISTRY: humagdmacr.azurecr.io
+  ACR_USERNAME: humagdmacr
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    container: node:16-alpine
+    steps:
+      - uses: actions/checkout@v3
+      - name: Create coverage report dir
+        run: mkdir -p coverage-reports
+      - name: Set up yarn tests
+        run: yarn install --frozen-lockfile
+      - name: Run yarn linter
+        run: yarn lint
+      - name: Run yarn build
+        run: yarn build
+      - name: Run yarn tests
+        run: yarn test
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: code-coverage-report
+          path: coverage-reports/lcov.info
+
+  build_and_push:
+    name: Build and push
+    needs: [test]
+    if: ${{ github.ref == 'refs/heads/develop' }}
+    runs-on: ubuntu-latest
+    env:
+      ACR_REPO_BASE: dhos
+    steps:
+      - uses: actions/checkout@v3
+      - name: Log in to the Azure Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ env.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.ACR_REPO_BASE }}/dhos-rules-engine
+          tags: |
+            type=raw,value=dev
+            type=sha
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
