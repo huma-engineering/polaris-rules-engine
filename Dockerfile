@@ -1,7 +1,7 @@
 #####
 # Build the common base
 #####
-FROM node:11-alpine as basebuilder
+FROM node:13.1-alpine as basebuilder
 
 RUN apk update && apk upgrade
 
