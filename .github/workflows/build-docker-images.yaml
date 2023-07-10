@@ -1,0 +1,29 @@
+name: Build docker images manual
+
+on:
+  workflow_dispatch:
+    inputs:
+      git_ref: { type: string, description: git ref to checkout before build }
+      image: { type: string, description: Image name }
+      tag: { type: string, description: Image tag }
+
+jobs:
+  build:
+    name: Build and push
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ inputs.git_ref }}
+      - name: Log in to the Container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: ${{ inputs.image }}:${{ inputs.tag }}
